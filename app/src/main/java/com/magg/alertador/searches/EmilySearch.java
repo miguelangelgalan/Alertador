@@ -20,6 +20,15 @@ import java.util.List;
  */
 public class EmilySearch implements ISearch {
     private String baseUrl = "http://www.pasion.com/contactos/602447407.htm";
+
+    public SearchResult search_() {
+        SearchResult sR = new SearchResult();
+        sR.setName("Emily");
+        sR.setFound(true);
+        sR.setResult("Test:" + System.currentTimeMillis());
+        return sR;
+    }
+
     @Override
     public SearchResult search() {
 

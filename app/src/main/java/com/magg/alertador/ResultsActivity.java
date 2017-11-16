@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -15,7 +16,8 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        totalResults = getIntent().getIntExtra("TotalResults", 0);
+        //Toast.makeText(this,"onCreate",Toast.LENGTH_LONG).show();
+/*        totalResults = getIntent().getIntExtra("TotalResults", 0);
         EditText totalResultstext = (EditText) findViewById(R.id.totalResultsTextId);
 
         if (null != totalResultstext) {
@@ -23,12 +25,29 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         showResult(1);
+        */
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        totalResults = getIntent().getIntExtra("TotalResults", 0);
+        //Toast.makeText(this, "onStart. TR:"+totalResults,Toast.LENGTH_LONG).show();
+        EditText totalResultstext = (EditText) findViewById(R.id.totalResultsTextId);
+
+        if (null != totalResultstext) {
+            totalResultstext.setText("" + totalResults);
+        }
+
+        showResult(1);
+
     }
 
     private void showResult(int i) {
-
+        //Toast.makeText(this,"showResult:"+i,Toast.LENGTH_LONG).show();
         if (i>totalResults) i=totalResults;
-        if (i<=0) i=1;
+        if (i<=0) i=0;
 
         EditText name = (EditText) findViewById(R.id.nameText);
         EditText found = (EditText) findViewById(R.id.statusText);
@@ -46,11 +65,11 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     public void nextResukt(View view){
-        showResult(--resultadoActual);
+        showResult(++resultadoActual);
     }
 
     public void prevResult(View view) {
-        showResult(++resultadoActual);
+        showResult(--resultadoActual);
     }
 }
 

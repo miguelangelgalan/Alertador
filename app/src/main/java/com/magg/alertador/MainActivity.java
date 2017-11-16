@@ -75,7 +75,7 @@ import com.magg.alertador.service.SearchServiceT;
      public void buttonStartOn(View view) {
 
          if (startService(new Intent(this, SearchServiceT.class)) != null) {
-             statusText.setText("ARRANCADO");
+             statusText.setText("ARRANCADO!");
          }
          //SearchService ss = new SearchService();
          //ss.setStatus("ARRANCADO");

@@ -44,10 +44,11 @@ public class Notificator {
         // Intent i = new Intent(MainActivity.this, MensajeActivity.class);
         // PendingIntent pendingIntent = PendingIntent.getActivity (MainActivity.this, 0, i, 0);
         PendingIntent pendingIntent;
+        int iUniqueId = (int) (System.currentTimeMillis() & 0xfffffff);
         if (null==intent) {
-            pendingIntent = PendingIntent.getActivity (mContext, 0, new Intent(mContext, clsActivity), 0);
+            pendingIntent = PendingIntent.getActivity (mContext, iUniqueId, new Intent(mContext, clsActivity), 0);
         } else {
-            pendingIntent = PendingIntent.getActivity (mContext, 0, intent, 0);
+            pendingIntent = PendingIntent.getActivity (mContext, iUniqueId, intent, 0);
         }
 
 

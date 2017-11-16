@@ -11,7 +11,7 @@ public class Configuracion {
 	private static final String propFileName = "alertador.properties";
 	private static Logger log = Logger.getLogger("CONFIGURACION");
 
-	public static long TIEMPO_EJECUCION_SERVICIO = 60;  // En minutos
+	public static long TIEMPO_EJECUCION_SERVICIO = 120	;  // En minutos
 	
 	public static String getProperty (String name) {
 		

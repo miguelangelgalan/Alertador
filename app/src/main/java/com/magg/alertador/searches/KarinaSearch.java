@@ -16,12 +16,21 @@ import java.util.List;
  */
 public class KarinaSearch implements ISearch {
     private String baseUrl = "http://www.pasion.com/contactos/636068697-karina.htm";
+
+        public SearchResult search_() {
+            SearchResult sR = new SearchResult();
+            sR.setName("Karine");
+            sR.setFound(true);
+            sR.setResult("Test:" + System.currentTimeMillis());
+        return sR;
+        }
+
     @Override
-    public SearchResult search() {
+        public SearchResult search() {
 
         // Do the Search
         SearchResult sR = new SearchResult();
-        sR.setName("Karina");
+        sR.setName("Karine");
 
         try {
             MechanizeAgent agent = HTTPCLIENT.getMechanizeAgent();
@@ -46,10 +55,13 @@ public class KarinaSearch implements ISearch {
                         if (diasStr.contains("horas") || diasStr.contains("minutos")) { // Actualizado!!
                             sR.setFound(true);
                             sR.setResult("ACTUALIZADO HACE: " + diasStr);
-                        } else {
-                            sR.setFound(false);
-                            sR.setResult("NO ACTUALIZADO: " + diasStr);
-                        }
+                        } else if (diasStr.contains("Auto")){
+                            sR.setFound(true);
+                            sR.setResult("ACTUALIZADO: " + diasStr);
+                        } else if (diasStr.contains("días")){
+                        sR.setFound(false);
+                        sR.setResult("ACTUALIZADO: " + diasStr);
+                    }
                     }
                 }
             }
